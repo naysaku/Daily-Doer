@@ -1,0 +1,134 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+
+body, h1, button, input, li {
+    text-align: center;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden; /* Prevent unnecessary scroll at the body level */
+}
+
+.container {
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+    overflow: auto; /* Enable scroll for container only if needed */
+    max-height: 100vh; /* Limit container height to viewport height */
+    margin: 0 auto; /* Center the container */
+}
+
+h1, button, input {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 100%;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa; /* Restore grey background for tasks */
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #dee2e6; /* Add border for tasks */
+    position: relative;
+}
+
+li.completed {
+    text-decoration: line-through;
+    color: #adb5bd;
+    background-color: #e9ecef; /* Lighter grey to indicate completion */
+}
+
+#template-tasks li, #template-list li, #load-template-list li {
+    margin-top: 10px;
+    text-align: center; /* Ensure text alignment is centered */
+}
+
+#template-tasks li button, #template-list li button {
+    padding: 5px 15px;
+    background-color: #dc3545; /* Red color for 'Remove' buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px; /* Space between text and button */
+}
+
+#template-tasks li button:hover, #template-list li button:hover {
+    background-color: #c82333; /* Darker shade for hover state */
+}
+
+/* Modal Styles */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal-content p {
+    color: #333;
+}
+
+.modal-content button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.modal-content button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Doer</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval';">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+        /* Additional styles */
+        .container {
+            margin: 20px;
+            padding: 20px;
+        }
+        .modal {
+            position: fixed;
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            display: flex;
+            align-items: center; /* Center vertically */
+            justify-content: center; /* Center horizontally */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-screen">
+        <h1>Daily Doer</h1>
+        <input type="text" id="todo-input" placeholder="Enter a task...">
+        <button onclick="addTodo()">Add Task</button>
+        <button onclick="showTemplateOptions()">Templates</button>
+        <button onclick="showTaskViewer()">Go to Task Viewer</button>
+    </div>
+
+    <div class="container" id="template-options-screen" style="display: none;">
+        <h1>Templates</h1>
+        <button onclick="showTemplateCreator()">Create Custom Template</button>
+        <button onclick="showTemplateLoader()">Load Templates</button>
+        <button onclick="showTemplateDeleter()">Delete Templates</button>
+        <button onclick="showMainScreen()">Back to Main</button>
+    </div>
+
+    <div class="container" id="template-creator-screen" style="display: none;">
+        <h1>Create Custom Template</h1>
+        <input type="text" id="template-name-input" placeholder="Template name...">
+        <input type="text" id="template-task-input" placeholder="Enter a task...">
+        <button onclick="addTemplateTask()">Add Task to Template</button>
+        <ul id="template-tasks"></ul>
+        <button onclick="saveTemplate()">Save Template</button>
+        <button onclick="showTemplateOptions()">Back to Templates</button>
+    </div>
+    
+
+    <div class="container" id="template-loader-screen" style="display: none;">
+        <h1>Load Template</h1>
+        <ul id="load-template-list"></ul>
+        <button onclick="showTemplateOptions()">Back to Templates</button>
+    </div>
+
+    <div class="container" id="template-deleter-screen" style="display: none;">
+        <h1>Delete Templates</h1>
+        <ul id="template-list"></ul>
+        <button onclick="showTemplateOptions()">Back to Templates</button>
+    </div>
+
+    <div class="container" id="todo-list-screen" style="display: none;">
+        <h1>Task Viewer</h1>
+        <ul id="todo-list"></ul>
+        <button onclick="clearCompletedTasks()">Clear Completed Tasks</button>
+        <button onclick="showMainScreen()">Back to Main</button>
+    </div>
+
+    <div id="alertModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <p id="alertMessage"></p>
+            <button onclick="closeAlertModal()">OK</button>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

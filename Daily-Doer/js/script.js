@@ -33,7 +33,7 @@ function clearCompletedTasks() {
 
 function showAlertModal(message) {
     document.getElementById('alertMessage').textContent = message;
-    document.getElementById('alertModal').style.display = 'flex'; // Make sure this matches your modal's display style for visibility
+    document.getElementById('alertModal').style.display = 'flex'; 
 }
 
 function closeAlertModal() {
@@ -102,9 +102,8 @@ function saveTemplate() {
     var tasks = [];
     
     ul.childNodes.forEach(function(li) {
-        // Only add tasks, not the remove buttons
         if (li.nodeType === Node.ELEMENT_NODE) {
-            tasks.push(li.firstChild.textContent); // Assuming the first child is the text
+            tasks.push(li.firstChild.textContent);
         }
     });
     
@@ -126,8 +125,8 @@ function saveTemplate() {
 
 function showTemplateLoader() {
     var templates = JSON.parse(localStorage.getItem('templates')) || {};
-    var list = document.getElementById('load-template-list'); // Assume this is the ID for your load list in HTML
-    list.innerHTML = ''; // Clear the list first
+    var list = document.getElementById('load-template-list'); 
+    list.innerHTML = ''; 
 
     Object.keys(templates).forEach(function(templateName) {
         var li = document.createElement('li');
@@ -140,9 +139,7 @@ function showTemplateLoader() {
         list.appendChild(li);
     });
 
-    // Show the template loader screen
     document.getElementById('template-loader-screen').style.display = 'block';
-    // Hide other screens
     document.getElementById('main-screen').style.display = 'none';
     document.getElementById('template-deleter-screen').style.display = 'none';
     document.getElementById('template-options-screen').style.display = 'none';
@@ -153,16 +150,8 @@ function loadTemplate(templateName) {
     var templates = JSON.parse(localStorage.getItem('templates')) || {};
     var tasks = templates[templateName];
     if (tasks) {
-        // Clear current tasks in the Task Viewer, if necessary
-        // document.getElementById('todo-list').innerHTML = '';
-
-        // Add each task from the template to the Task Viewer list
-        tasks.forEach(task => appendTaskToList('todo-list', task));
-        
-        // Display a message indicating the template's tasks have been added to the Task Viewer
         showAlertModal('Template "' + templateName + '" tasks added to Task Viewer.');
     } else {
-        // If the template doesn't exist or has no tasks, show an error message
         showAlertModal('Error: Template "' + templateName + '" could not be found or has no tasks.');
     }
 }
@@ -182,7 +171,7 @@ function showTaskViewer() {
 function showTemplateDeleter() {
     var templates = JSON.parse(localStorage.getItem('templates')) || {};
     var list = document.getElementById('template-list'); // Assume this is the ID for your deletion list in HTML
-    list.innerHTML = ''; // Clear the list first
+    list.innerHTML = ''; 
 
     Object.keys(templates).forEach(function(templateName) {
         var li = document.createElement('li');
@@ -193,7 +182,7 @@ function showTemplateDeleter() {
         deleteButton.onclick = function() {
             delete templates[templateName];
                 localStorage.setItem('templates', JSON.stringify(templates));
-                li.remove(); // Remove the template item from the list
+                li.remove(); 
                 showAlertModal('Template "' + templateName + '" has been deleted.');
                 binToss.play();
         };
@@ -204,7 +193,6 @@ function showTemplateDeleter() {
 
     // Show the template deleter screen
     document.getElementById('template-deleter-screen').style.display = 'block';
-    // Hide other screens
     document.getElementById('main-screen').style.display = 'none';
     document.getElementById('template-loader-screen').style.display = 'none';
     document.getElementById('template-options-screen').style.display = 'none';

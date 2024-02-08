@@ -90,7 +90,7 @@ function addTemplateTask() {
         li.appendChild(removeButton);
         ul.appendChild(li);
 
-        input.value = ''; // Clear the input field
+        input.value = ''; 
         dingSound.play();
     }
 }
@@ -170,7 +170,7 @@ function showTaskViewer() {
 
 function showTemplateDeleter() {
     var templates = JSON.parse(localStorage.getItem('templates')) || {};
-    var list = document.getElementById('template-list'); // Assume this is the ID for your deletion list in HTML
+    var list = document.getElementById('template-list'); 
     list.innerHTML = ''; 
 
     Object.keys(templates).forEach(function(templateName) {
@@ -191,7 +191,6 @@ function showTemplateDeleter() {
         list.appendChild(li);
     });
 
-    // Show the template deleter screen
     document.getElementById('template-deleter-screen').style.display = 'block';
     document.getElementById('main-screen').style.display = 'none';
     document.getElementById('template-loader-screen').style.display = 'none';

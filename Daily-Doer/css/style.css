@@ -92,9 +92,9 @@ li.completed {
     background-color: #c82333; 
 }
 
-/* Modal Styles */
+
 .modal {
-    display: none; /* Initially hidden */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
